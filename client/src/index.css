@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ========================================
+   APPLE DESIGN LANGUAGE 2026
+   Minimalismo Corporativo Premium
+======================================== */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* Apple Design: Paleta Neutra com Acentos Estratégicos */
+  --primary: #0066CC; /* Azul Profundo para CTAs */
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5F5F7; /* Cinza muito claro */
+  --secondary-foreground: #1D1D1F; /* Preto/Cinza escuro */
+  --accent: #34C759; /* Verde para sucesso */
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF3B30;
+  --destructive-foreground: #FFFFFF;
+  
+  /* Sidebar customizado para Apple */
+  --sidebar-primary: #0066CC;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #34C759;
+  --sidebar-accent-foreground: #FFFFFF;
+  
+  /* Charts em tons de azul */
+  --chart-1: #0066CC;
+  --chart-2: #0052A3;
+  --chart-3: #003D7A;
+  --chart-4: #002851;
+  --chart-5: #001428;
+  
+  --radius: 0.65rem;
+  --background: oklch(0.99 0.001 0);
+  --foreground: oklch(0.235 0.015 65);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.235 0.015 65);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.235 0.015 65);
+  --muted: oklch(0.97 0.001 0);
+  --muted-foreground: oklch(0.552 0.016 285.938);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.623 0.214 259.815);
+  --sidebar: oklch(0.99 0.001 0);
+  --sidebar-foreground: oklch(0.235 0.015 65);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.623 0.214 259.815);
+}
+
+.dark {
+  --primary: #0A84FF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1D1D1F;
+  --secondary-foreground: #F5F5F7;
+  --accent: #34C759;
+  --accent-foreground: #000000;
+  --destructive: #FF453A;
+  --destructive-foreground: #FFFFFF;
+  
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.85 0.005 65);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.85 0.005 65);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.85 0.005 65);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.705 0.015 286.067);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.488 0.243 264.376);
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.85 0.005 65);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   * Apple Design: Espaçamento generoso e alinhamento claro
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Apple Design: Tipografia Premium */
+  .text-display {
+    @apply text-5xl font-bold tracking-tight;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .text-heading {
+    @apply text-3xl font-semibold tracking-tight;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .text-subheading {
+    @apply text-xl font-medium tracking-tight;
+  }
+
+  .text-body {
+    @apply text-base font-normal;
+  }
+
+  .text-caption {
+    @apply text-sm font-normal text-muted-foreground;
+  }
+
+  /* Apple Design: Cards com sombra suave */
+  .card-apple {
+    @apply rounded-lg border border-border bg-card p-6 shadow-sm transition-all duration-300;
+  }
+
+  .card-apple:hover {
+    @apply shadow-md;
+  }
+
+  /* Apple Design: Botões com transição suave */
+  .btn-apple-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-out bg-primary text-primary-foreground hover:shadow-lg hover:scale-105 active:scale-100;
+  }
+
+  .btn-apple-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-out bg-secondary text-secondary-foreground hover:bg-muted;
+  }
+
+  /* Apple Design: Espaçamento generoso */
+  .section-spacing {
+    @apply py-20 md:py-32;
+  }
+
+  .section-spacing-sm {
+    @apply py-12 md:py-20;
+  }
+}
+
+/* ========================================
+   GOOGLE FONTS IMPORT
+======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
